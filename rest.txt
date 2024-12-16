@@ -1,0 +1,7 @@
+Start epoch 25/25
+Batch 186/186: loss = 0.1059
+Epoch 25 finished. Average loss: 0.1211
+
+Evaluation completed. Average loss: 0.1379
+Mean IoU: 0.3876
+Class-Weighted IoU: 0.9136

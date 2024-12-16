@@ -1,0 +1,14 @@
+**Dataset_utils:**
+
+The idea is to follow the classic structure of having a class that inherits from Dataset and using it through a dataloader.  
+The Dataset combines both sunny and rainy data, and for each item, it returns its image and its segmentation mask, both already opened.  
+By observing the dataset, we realized two things, and a solution for each of them has been implemented through a function called `generate_splits` that pre-generates the splits to be used by the Dataset.  
+
+- **Rainy**: It is a single sequence in which there are frames where the ground truth (gt) has a lot of noise.  
+- **Sunny**: It consists of several sequences, and there usually isn't as much noise.
+
+-> What has been done is the creation of a function called `generate_splits`, which generates the splits while respecting groups of frames defined in advance. This allows the sunny sequences to be used consecutively and also enables splitting the rainy sequences into other sequences (possibly removing middle frames). This helps avoid having "identical" frames (t, t+1), where one is in training and the other in testing, which introduces data leakage.  
+   Additionally, this allows for removing frames, which makes it possible to ignore frames with too much noise in the ground truth if desired.  
+However, using these splits is not mandatory.  
+
+Since the classes are imbalanced, it is checked using mean IoU (mean Intersection over Union across the dataset) and Class-Weighted IoU (which takes into account the proportions of the classes).
