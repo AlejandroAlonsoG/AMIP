@@ -2,6 +2,8 @@
 from typing import Callable, List
 import torch
 import torch.utils.data as data
+from sklearn.metrics import confusion_matrix
+import numpy as np
 
 class BaselineTrainer:
     def __init__(self, model: torch.nn.Module,
@@ -53,9 +55,6 @@ class BaselineTrainer:
         return avg_loss
 
     def evaluate(self, test_data_loader: data.DataLoader, num_classes):
-        from sklearn.metrics import confusion_matrix
-        import numpy as np
-
         self.model.eval()
         total_loss = 0
 
