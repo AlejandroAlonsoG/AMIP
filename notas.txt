@@ -12,3 +12,7 @@ By observing the dataset, we realized two things, and a solution for each of the
 However, using these splits is not mandatory.  
 
 Since the classes are imbalanced, it is checked using mean IoU (mean Intersection over Union across the dataset) and Class-Weighted IoU (which takes into account the proportions of the classes).
+
+Sequence changes:
+- Sunny: from 66628 to 68553 (CHANGE) from 73339 TO 73983
+- Rainny: from 53921 to 55740 (change) from 62733 to 64353

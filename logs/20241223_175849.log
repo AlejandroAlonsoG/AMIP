@@ -1,0 +1,8 @@
+{'directories': {'save_model_path': './model.pth'}, 'training': {'batch_size': 16, 'num_epochs': 1, 'loss': 'CrossEntropy', 'optimizer': 'Adam', 'learning_rate': 0.001}, 'dataset': {'root': '/net/ens/am4ip/datasets/project-dataset', 'use_general_transforms': False, 'sunny_augmentation_prob': 0, 'rainy_augmentation_prob': 0, 'original_size': [1920, 1080]}}
+Training samples: 5936
+Testing samples: 1485
+
+Start epoch 1/1
+
+20241223_180218 - Epoch 1 finished. Avg Loss: 1.1093, Mean IoU: 0.0738
+20241223_180237 - Evaluation complete. Avg Loss: 0.6529, Mean IoU: 0.1137

@@ -2,14 +2,14 @@ import os
 from torch.utils.data import Dataset
 from PIL import Image
 import random
-
+import numpy as np
 import os
 import random
-from torch.utils.data import Dataset
-from PIL import Image
+
+import transforms_loader as tl
 
 class VancouverDataset(Dataset):
-    def __init__(self, root_dir, split, groups=None, transform=None, target_transform=None, split_ratio=0.8):
+    def __init__(self, root_dir, split, groups=None, transform=None, target_transform=None, split_ratio=0.8, sunny_augmentation_prob=0, rainy_augmentation_prob=0):
         """
         Args:
             root_dir (str): Path to the dataset directory.
@@ -36,8 +36,19 @@ class VancouverDataset(Dataset):
                 self.data.append({
                     'image_path': os.path.join(image_dir, img_file),
                     'sseg_path': os.path.join(sseg_dir, os.path.splitext(img_file)[0] + ".png"),
-                    'id': img_id
+                    'id': img_id,
+                    'augmented': False,
+                    'mode': mode
                 })
+                rand = random.random()
+                if  (mode == 'rainy' and rand < rainy_augmentation_prob) or (mode == 'sunny' and rand < sunny_augmentation_prob):
+                    self.data.append({
+                        'image_path': os.path.join(image_dir, img_file),
+                        'sseg_path': os.path.join(sseg_dir, os.path.splitext(img_file)[0] + ".png"),
+                        'id': img_id,
+                        'augmented': True,
+                        'mode': mode
+                    })
         
         # Create splits if no groups provided
         if self.groups is None:
@@ -61,6 +72,22 @@ class VancouverDataset(Dataset):
         item = self.data[idx]
         image = Image.open(item['image_path']).convert("RGB")
         segmentation = Image.open(item['sseg_path'])
+
+        if item['augmented']:
+
+            image = np.array(image)
+            segmentation = np.array(segmentation)
+
+            if item['mode'] == 'sunny':
+                sunny_augmentation = tl.get_sunny_augmentation()
+                augmented = sunny_augmentation(image=image)
+                image = augmented['image']
+            else:
+                rainy_augmentation = tl.get_rainy_augmentation()
+                image = rainy_augmentation(image)
+
+            image = Image.fromarray(image)
+            segmentation = Image.fromarray(segmentation)
 
         if self.transform:
             image = self.transform(image)

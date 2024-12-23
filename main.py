@@ -1,28 +1,56 @@
 
 from torch.utils.data import DataLoader
 import torch
+import sys
+from datetime import datetime
+import pprint
 
-from dataset_utils import VancouverDataset, generate_splits
+from dataset_utils import VancouverDataset
 from unet import UNet
 from trainer import BaselineTrainer
 import general_loader as gl
+import transforms_loader as tl
+
+# This is just for being able to log into a file at the same time that the output gets printed on the terminal
+class TeeStream:
+    def __init__(self, log_file):
+        self.terminal = sys.stdout
+        self.log = open(log_file, "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self):
+        self.terminal.flush()
+        self.log.flush()
 
 def main(cfg):
 
+    ## Set up logging ##
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    sys.stdout = TeeStream(f"./logs/{timestamp}.log")
+    sys.stderr = sys.stdout
+
+    pprint.pprint(cfg)
+
     ## Load datasets ##
 
-    image_transform, segmentation_transform = gl.get_transforms()
+    image_transform, segmentation_transform = tl.get_transforms(general_transforms=cfg.dataset.use_general_transforms, input_size=cfg.dataset.original_size)
 
     train_dataset = VancouverDataset(
-        root_dir=cfg.directories.dataset_root,
+        root_dir=cfg.dataset.root,
         split='train',
         groups=None,
         transform=image_transform,
-        target_transform=segmentation_transform
+        target_transform=segmentation_transform,
+        sunny_augmentation_prob=cfg.dataset.sunny_augmentation_prob,
+        rainy_augmentation_prob=cfg.dataset.rainy_augmentation_prob
     )
 
     test_dataset = VancouverDataset(
-        root_dir=cfg.directories.dataset_root,
+        root_dir=cfg.dataset.root,
         split='test',
         groups=None,
         transform=image_transform,
@@ -49,6 +77,7 @@ def main(cfg):
         model=model,
         loss=criterion,
         optimizer=optimizer,
+        num_classes=len(classes),
         use_cuda=torch.cuda.is_available()
     )
 
@@ -56,7 +85,7 @@ def main(cfg):
 
     ## Evaluate ##
 
-    trainer.evaluate(test_loader, num_classes=len(classes))
+    trainer.evaluate(test_loader)
 
     ## Save model ##
 
@@ -64,6 +93,14 @@ def main(cfg):
 
 if __name__ == '__main__':
 
-    cfg = gl.load_config("./config.yaml")
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <config_path>")
+        sys.exit(1)
 
-    main(cfg)
+    config_path = sys.argv[1]
+    try:
+        cfg = gl.load_config(config_path)
+        main(cfg)
+    except Exception as e:
+        print(f"Error loading configuration from {config_path}: {e}")
+        sys.exit(1)

@@ -1,0 +1,5 @@
+# Ignore all .mp4 files
+*.mp4
+
+# Ignore all .pth files
+*.pth

@@ -1,6 +1,3 @@
-from torchvision import transforms
-from PIL import Image
-import numpy as np
 import torch
 import torch.nn as nn
 import yaml
@@ -48,24 +45,6 @@ def get_classes():
     ]
 
     return classes
-
-def get_transforms():
-    # Transformation for images
-    image_transform = transforms.Compose([
-        transforms.Resize((256, 256)),
-        transforms.ToTensor()
-    ])
-    # Transformation for mask requires to not normalize it, therefore it needs a custom way to get it into a tensor
-    class ToClassTensor:
-        def __call__(self, mask):
-            return torch.tensor(np.array(mask), dtype=torch.long)
-
-    segmentation_transform = transforms.Compose([
-        transforms.Resize((256, 256), interpolation=Image.NEAREST),
-        ToClassTensor()
-    ])
-
-    return image_transform, segmentation_transform
 
 def load_loss(loss):
     if loss == 'CrossEntropy':
