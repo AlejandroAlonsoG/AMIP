@@ -2,7 +2,7 @@ import subprocess
 import sys
 
 def main():
-    valid_options = ['00', '01', '10', '11']
+    valid_options = [0, 1, 2, 3]
 
     try:
         number = int(sys.argv[1])
@@ -15,10 +15,10 @@ def main():
 
     # Define the order of execution
     execution_order = {
-        '00': ['00', '01', '10', '11'],
-        '01': ['01', '10', '11', '00'],
-        '10': ['10', '11', '00', '01'],
-        '11': ['11', '00', '01', '10']
+        0: ['00', '01', '10', '11'],
+        1: ['01', '10', '11', '00'],
+        2: ['10', '11', '00', '01'],
+        3: ['11', '00', '01', '10']
     }
 
     # Get the execution order based on the input number
@@ -27,8 +27,8 @@ def main():
     # Execute commands for each number in the order
     for num in order:
         commands = [
-            f"python3 main.py --cfg configs/conf_{num}0.yaml",
-            f"python3 main.py --cfg configs/conf_{num}1.yaml"
+            f"python3 main.py configs/conf_{num}0.yaml",
+            f"python3 main.py configs/conf_{num}1.yaml"
         ]
 
         for command in commands:

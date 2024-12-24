@@ -91,12 +91,22 @@ class BaselineTrainer:
                         mask.flatten(), pred.flatten(), labels=list(range(self.num_classes))
                     )
 
-        intersection = np.diag(confusion_mat)
-        union = (confusion_mat.sum(axis=0) + confusion_mat.sum(axis=1) - intersection)
+        # Get intersection over union
+        intersection = np.diag(confusion_mat) # TP
+        union = (confusion_mat.sum(axis=0) + confusion_mat.sum(axis=1) - intersection)  # Union = TP + FP + FN
         iou_per_class = intersection / (union + 1e-6)
+
+        # Get mean IoU
         mean_iou = np.mean(iou_per_class)
+
+        # Get class-weighted IoU
+        class_pixel_frequencies = confusion_mat.sum(axis=1) / confusion_mat.sum()
+        weighted_iou = np.sum(class_pixel_frequencies * iou_per_class)
+
+        # Get average loss
         avg_loss = total_loss / len(test_data_loader)
 
+
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        print(f"{timestamp} - Evaluation complete. Avg Loss: {avg_loss:.4f}, Mean IoU: {mean_iou:.4f}")
-        return avg_loss, mean_iou
+        print(f"{timestamp} - Evaluation complete. Avg Loss: {avg_loss:.4f}, Mean IoU: {mean_iou:.4f}, Weighted IoU: {weighted_iou:.4f}")
+        return avg_loss, mean_iou, weighted_iou

@@ -71,7 +71,6 @@ def get_rainy_augmentation():
 
     return rainy_augmentation
 
-
 # Main function for base transformations (+ some others if selected)
 def get_transforms(input_size, general_transforms=False):
     base_transform = transforms.Compose([
@@ -79,15 +78,25 @@ def get_transforms(input_size, general_transforms=False):
         transforms.ToTensor()
     ])
 
-    general_transform = None
-    # general transforms
-    if general_transforms:
-        general_transform = A.Compose([
-            A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=0.7),
-            A.HorizontalFlip(p=0.5),
-            A.RandomCrop(height=(input_size[0])*4//5, width=(input_size[1])*4//5, p=1.0),
-        ])
+    # Wrapper for Albumentations transforms so we can use it as transform(image)
+    class AlbumentationsTransform:
+        def __init__(self, albumentations_transform):
+            self.albumentations_transform = albumentations_transform
 
+        def __call__(self, image):
+            image = np.array(image)
+            augmented = self.albumentations_transform(image=image)
+            return Image.fromarray(augmented['image'])
+
+    # general transforms
+    general_transform = None
+    if general_transforms:
+        general_transform = AlbumentationsTransform(A.Compose([
+            A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=0.7),
+            A.HorizontalFlip(p=0.5)
+        ]))
+
+    # Define the final transformation
     final_transform = transforms.Compose([
         general_transform if general_transform else lambda x: x,
         base_transform
