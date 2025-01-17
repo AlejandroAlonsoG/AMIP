@@ -50,10 +50,9 @@ class VancouverDataset(Dataset):
                         'mode': mode
                     })
         
-        # Create splits if no groups provided
-        if self.groups is None:
+        if self.groups is None: # Data leakeage
             random.seed(42)
-            random.shuffle(self.data) # Always same split
+            random.shuffle(self.data)
             split_idx = int(len(self.data) * self.split_ratio)
             if self.split == 'train':
                 self.data = self.data[:split_idx]
@@ -61,9 +60,25 @@ class VancouverDataset(Dataset):
                 self.data = self.data[split_idx:]
             else:
                 raise ValueError("split must be 'train' or 'test'")
-        else:
-            # Filter data based on the provided groups
-            self.data = [item for item in self.data if self.groups.get(item['id']) == split]
+        elif len(groups) == 0: # Not data leakeage
+            split_idx = int(len(self.data) * self.split_ratio)
+
+            train_data = self.data[:split_idx]
+            test_data = self.data[split_idx:]
+
+            random.seed(42)
+            random.shuffle(train_data)
+            random.shuffle(test_data)
+
+            if self.split == 'train':
+                self.data = train_data
+            elif self.split == 'test':
+                self.data = test_data
+            else:
+                raise ValueError("split must be 'train' or 'test'")
+        else: # Manual partitions
+            self.data = [item for item in self.data if self.groups.get(item['id']) == self.split]
+
 
     def __len__(self):
         return len(self.data)

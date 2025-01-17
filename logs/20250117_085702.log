@@ -1,0 +1,16 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 0,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 1,
+             'use_general_transforms': False},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 8960
+Testing samples: 1485
+
+Start epoch 1/100
+Error loading configuration from configs/conf_010.yaml: Given groups=1, weight of size [512, 256, 3, 3], expected input[16, 512, 16, 16] to have 256 channels, but got 512 channels instead

@@ -1,0 +1,60 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 1,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 1,
+             'use_general_transforms': False},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 11873
+Testing samples: 1485
+
+Start epoch 1/100
+
+20250116_181937 - Epoch 1 finished. Avg Loss: 1.3534, Mean IoU: 0.0802
+
+Start epoch 2/100
+
+20250116_183252 - Epoch 2 finished. Avg Loss: 0.4241, Mean IoU: 0.1911
+
+Start epoch 3/100
+Error loading configuration from configs/conf_011.yaml: Caught error in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/autofs/unityaccount/cremi/aalonsogarci/shared_cremi/AMIP/dataset_utils.py", line 83, in __getitem__
+    augmented = sunny_augmentation(image=image)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages/albumentations/core/composition.py", line 205, in __call__
+    data = t(force_apply=force_apply, **data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages/albumentations/core/transforms_interface.py", line 95, in __call__
+    return self.apply_with_params(params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages/albumentations/core/transforms_interface.py", line 110, in apply_with_params
+    res[key] = target_function(arg, **dict(params, **target_dependencies))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages/albumentations/augmentations/transforms.py", line 1117, in apply
+    return F.add_sun_flare(
+           ^^^^^^^^^^^^^^^^
+  File "/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages/albumentations/augmentations/functional.py", line 157, in wrapped_function
+    result = func(img, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages/albumentations/augmentations/functional.py", line 980, in add_sun_flare
+    cv2.circle(overlay, (x, y), rad3, (r_color, g_color, b_color), -1)
+cv2.error: OpenCV(4.8.0) :-1: error: (-5:Bad argument) in function 'circle'
+> Overload resolution failed:
+>  - Can't parse 'center'. Sequence item with index 1 has a wrong type
+>  - Can't parse 'center'. Sequence item with index 1 has a wrong type
+
+

@@ -1,0 +1,15 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 1,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 0,
+             'use_general_transforms': True},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 8850
+Testing samples: 1485
+
+Start epoch 1/100

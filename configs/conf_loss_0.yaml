@@ -3,12 +3,12 @@ directories:
 training:
     batch_size: 16
     num_epochs: 100
-    loss: "CrossEntropy"
+    loss: "FocalLoss"
     optimizer: "Adam"
     learning_rate: 0.001
 dataset:
     root: "/net/ens/am4ip/datasets/project-dataset"
-    use_general_transforms: True
+    use_general_transforms: False
     sunny_augmentation_prob: 1
     rainy_augmentation_prob: 1
     original_size: [1920, 1080]

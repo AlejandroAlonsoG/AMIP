@@ -1,0 +1,35 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 1,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 0,
+             'use_general_transforms': True},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 8850
+Testing samples: 1485
+
+Start epoch 1/100
+
+20250116_151714 - Epoch 1 finished. Avg Loss: 1.4870, Mean IoU: 0.0570
+
+Start epoch 2/100
+
+20250116_153004 - Epoch 2 finished. Avg Loss: 0.8187, Mean IoU: 0.0969
+
+Start epoch 3/100
+
+20250116_154239 - Epoch 3 finished. Avg Loss: 0.6303, Mean IoU: 0.1350
+
+Start epoch 4/100
+
+20250116_155542 - Epoch 4 finished. Avg Loss: 0.5156, Mean IoU: 0.1711
+
+Start epoch 5/100
+
+20250116_160826 - Epoch 5 finished. Avg Loss: 0.4436, Mean IoU: 0.1980
+
+Start epoch 6/100

@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import yaml
 from easydict import EasyDict
 
@@ -49,6 +50,8 @@ def get_classes():
 def load_loss(loss):
     if loss == 'CrossEntropy':
         return nn.CrossEntropyLoss()
+    elif loss == 'FocalLoss':
+        return FocalLoss()
     else:
         raise NotImplementedError("Requested loss not implemented!")
     
@@ -57,3 +60,36 @@ def load_optimizer(optimizer, parameters, lr):
         return torch.optim.Adam(parameters, lr=lr)
     else:
         raise NotImplementedError("Requested optimizer not implemented!")
+
+# Define Focal Loss
+class FocalLoss(nn.Module):
+    def __init__(self, gamma=2.0, alpha=0.25, reduction='mean'):
+        super(FocalLoss, self).__init__()
+        self.gamma = gamma
+        self.alpha = alpha
+        self.reduction = reduction
+
+    def forward(self, inputs, targets):
+        num_classes = inputs.size(1)  # Number of classes
+        # One-hot encode targets
+        targets_one_hot = F.one_hot(targets, num_classes=num_classes).permute(0, 3, 1, 2).float()
+        
+        # Compute log probabilities
+        log_probs = F.log_softmax(inputs, dim=1)
+        
+        # Compute probabilities
+        probs = torch.exp(log_probs)
+        
+        # Compute focal weights
+        focal_weights = self.alpha * (1 - probs) ** self.gamma
+        
+        # Compute focal loss
+        loss = -focal_weights * targets_one_hot * log_probs
+        
+        # Apply reduction
+        if self.reduction == 'mean':
+            return loss.sum(dim=1).mean()
+        elif self.reduction == 'sum':
+            return loss.sum()
+        else:
+            return loss

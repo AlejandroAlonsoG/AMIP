@@ -1,0 +1,67 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 1,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 1,
+             'use_general_transforms': True},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 11873
+Testing samples: 1485
+
+Start epoch 1/100
+
+20250116_093330 - Epoch 1 finished. Avg Loss: 1.2280, Mean IoU: 0.0636
+
+Start epoch 2/100
+
+20250116_094635 - Epoch 2 finished. Avg Loss: 0.8286, Mean IoU: 0.1033
+
+Start epoch 3/100
+
+20250116_095931 - Epoch 3 finished. Avg Loss: 0.5847, Mean IoU: 0.1661
+
+Start epoch 4/100
+
+20250116_101233 - Epoch 4 finished. Avg Loss: 0.4410, Mean IoU: 0.2186
+
+Start epoch 5/100
+
+20250116_102531 - Epoch 5 finished. Avg Loss: 0.3528, Mean IoU: 0.2537
+
+Start epoch 6/100
+
+20250116_103830 - Epoch 6 finished. Avg Loss: 0.3077, Mean IoU: 0.2735
+
+Start epoch 7/100
+
+20250116_105142 - Epoch 7 finished. Avg Loss: 0.2741, Mean IoU: 0.2903
+
+Start epoch 8/100
+
+20250116_110452 - Epoch 8 finished. Avg Loss: 0.2501, Mean IoU: 0.3047
+
+Start epoch 9/100
+
+20250116_111747 - Epoch 9 finished. Avg Loss: 0.2348, Mean IoU: 0.3152
+
+Start epoch 10/100
+
+20250116_113059 - Epoch 10 finished. Avg Loss: 0.2187, Mean IoU: 0.3268
+
+Start epoch 11/100
+
+20250116_114445 - Epoch 11 finished. Avg Loss: 0.2096, Mean IoU: 0.3327
+
+Start epoch 12/100
+
+20250116_115751 - Epoch 12 finished. Avg Loss: 0.2009, Mean IoU: 0.3374
+
+Start epoch 13/100
+
+20250116_121055 - Epoch 13 finished. Avg Loss: 0.1937, Mean IoU: 0.3427
+
+Start epoch 14/100

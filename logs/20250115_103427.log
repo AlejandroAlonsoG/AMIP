@@ -1,0 +1,110 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 0,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 1,
+             'use_general_transforms': False},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 8960
+Testing samples: 1485
+
+Start epoch 1/100
+
+20250115_103954 - Epoch 1 finished. Avg Loss: 1.6702, Mean IoU: 0.0668
+
+Start epoch 2/100
+
+20250115_104516 - Epoch 2 finished. Avg Loss: 0.5755, Mean IoU: 0.1351
+
+Start epoch 3/100
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-q_94dv1c/listener-5r1jh9m4'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 133, in _remove_temp_dir
+  File "/usr/lib/python3.11/shutil.py", line 732, in rmtree
+  File "/usr/lib/python3.11/shutil.py", line 635, in _rmtree_safe_fd
+  File "/usr/lib/python3.11/shutil.py", line 632, in _rmtree_safe_fd
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-q_94dv1c'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-b73scfdt/listener-4egtppjf'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 133, in _remove_temp_dir
+  File "/usr/lib/python3.11/shutil.py", line 732, in rmtree
+  File "/usr/lib/python3.11/shutil.py", line 635, in _rmtree_safe_fd
+  File "/usr/lib/python3.11/shutil.py", line 632, in _rmtree_safe_fd
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-b73scfdt'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-dd0_7p7i/listener-t0dadmxe'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 133, in _remove_temp_dir
+  File "/usr/lib/python3.11/shutil.py", line 732, in rmtree
+  File "/usr/lib/python3.11/shutil.py", line 635, in _rmtree_safe_fd
+  File "/usr/lib/python3.11/shutil.py", line 632, in _rmtree_safe_fd
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-dd0_7p7i'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-q8zeo23j/listener-4_g285_o'
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 300, in _run_finalizers
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 224, in __call__
+  File "/usr/lib/python3.11/multiprocessing/util.py", line 133, in _remove_temp_dir
+  File "/usr/lib/python3.11/shutil.py", line 732, in rmtree
+  File "/usr/lib/python3.11/shutil.py", line 635, in _rmtree_safe_fd
+  File "/usr/lib/python3.11/shutil.py", line 632, in _rmtree_safe_fd
+OSError: [Errno 5] Input/output error: '/tmp/cache-aalonsogarci/pymp-q8zeo23j'
+
+20250115_105037 - Epoch 3 finished. Avg Loss: 0.3645, Mean IoU: 0.2227
+
+Start epoch 4/100
+Error loading configuration from configs/conf_010.yaml: Caught UnidentifiedImageError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/autofs/unityaccount/cremi/aalonsogarci/shared_cremi/AMIP/dataset_utils.py", line 73, in __getitem__
+    image = Image.open(item['image_path']).convert("RGB")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/PIL/Image.py", line 3283, in open
+PIL.UnidentifiedImageError: cannot identify image file '/net/ens/am4ip/datasets/project-dataset/sunny_images/00067105.png'
+
+Exception ignored in atexit callback: <function dump_compile_times at 0x7fa5cb2c45e0>
+Traceback (most recent call last):
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/_dynamo/utils.py", line 335, in dump_compile_times
+    log.info(compile_times(repr="str", aggregate=True))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/_dynamo/utils.py", line 322, in compile_times
+    out += tabulate(rows, headers=("Function", "Runtimes (s)"))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/autofs/unityaccount/ens/DeepLearning/python3/tensorflow2/lib/python3.11/site-packages/torch/_dynamo/utils.py", line 127, in tabulate
+    import tabulate
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1080, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1504, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1476, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1616, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1659, in _fill_cache
+OSError: [Errno 5] Input/output error: '/net/cremi/aalonsogarci/.local/lib/python3.11/site-packages'

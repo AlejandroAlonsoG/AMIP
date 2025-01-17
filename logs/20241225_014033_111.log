@@ -1,0 +1,114 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 1,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 1,
+             'use_general_transforms': True},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 25,
+              'optimizer': 'Adam'}}
+Training samples: 11873
+Testing samples: 1485
+
+Start epoch 1/25
+
+20241225_015336 - Epoch 1 finished. Avg Loss: 1.2368, Mean IoU: 0.0655
+
+Start epoch 2/25
+
+20241225_020637 - Epoch 2 finished. Avg Loss: 0.7653, Mean IoU: 0.1092
+
+Start epoch 3/25
+
+20241225_021935 - Epoch 3 finished. Avg Loss: 0.6105, Mean IoU: 0.1564
+
+Start epoch 4/25
+
+20241225_023235 - Epoch 4 finished. Avg Loss: 0.5144, Mean IoU: 0.1932
+
+Start epoch 5/25
+
+20241225_024527 - Epoch 5 finished. Avg Loss: 0.4436, Mean IoU: 0.2223
+
+Start epoch 6/25
+
+20241225_025829 - Epoch 6 finished. Avg Loss: 0.3934, Mean IoU: 0.2429
+
+Start epoch 7/25
+
+20241225_031140 - Epoch 7 finished. Avg Loss: 0.3503, Mean IoU: 0.2588
+
+Start epoch 8/25
+
+20241225_032434 - Epoch 8 finished. Avg Loss: 0.3237, Mean IoU: 0.2718
+
+Start epoch 9/25
+
+20241225_033733 - Epoch 9 finished. Avg Loss: 0.2987, Mean IoU: 0.2854
+
+Start epoch 10/25
+
+20241225_035028 - Epoch 10 finished. Avg Loss: 0.2801, Mean IoU: 0.2955
+
+Start epoch 11/25
+
+20241225_040333 - Epoch 11 finished. Avg Loss: 0.2635, Mean IoU: 0.3053
+
+Start epoch 12/25
+
+20241225_041614 - Epoch 12 finished. Avg Loss: 0.2511, Mean IoU: 0.3130
+
+Start epoch 13/25
+
+20241225_042909 - Epoch 13 finished. Avg Loss: 0.2408, Mean IoU: 0.3183
+
+Start epoch 14/25
+
+20241225_044224 - Epoch 14 finished. Avg Loss: 0.2293, Mean IoU: 0.3254
+
+Start epoch 15/25
+
+20241225_045524 - Epoch 15 finished. Avg Loss: 0.2215, Mean IoU: 0.3291
+
+Start epoch 16/25
+
+20241225_050817 - Epoch 16 finished. Avg Loss: 0.2169, Mean IoU: 0.3320
+
+Start epoch 17/25
+
+20241225_052122 - Epoch 17 finished. Avg Loss: 0.2077, Mean IoU: 0.3385
+
+Start epoch 18/25
+
+20241225_053417 - Epoch 18 finished. Avg Loss: 0.2017, Mean IoU: 0.3419
+
+Start epoch 19/25
+
+20241225_054721 - Epoch 19 finished. Avg Loss: 0.1957, Mean IoU: 0.3446
+
+Start epoch 20/25
+
+20241225_060001 - Epoch 20 finished. Avg Loss: 0.1916, Mean IoU: 0.3471
+
+Start epoch 21/25
+
+20241225_061242 - Epoch 21 finished. Avg Loss: 0.1865, Mean IoU: 0.3514
+
+Start epoch 22/25
+
+20241225_062536 - Epoch 22 finished. Avg Loss: 0.1852, Mean IoU: 0.3515
+
+Start epoch 23/25
+
+20241225_063842 - Epoch 23 finished. Avg Loss: 0.1810, Mean IoU: 0.3546
+
+Start epoch 24/25
+
+20241225_065141 - Epoch 24 finished. Avg Loss: 0.1783, Mean IoU: 0.3552
+
+Start epoch 25/25
+
+20241225_070438 - Epoch 25 finished. Avg Loss: 0.1755, Mean IoU: 0.3580
+20241225_070458 - Evaluation complete. Avg Loss: 0.1854, Mean IoU: 0.3551, Weighted IoU: 0.8850

@@ -1,0 +1,16 @@
+{'dataset': {'original_size': [1920, 1080],
+             'rainy_augmentation_prob': 0,
+             'root': '/net/ens/am4ip/datasets/project-dataset',
+             'sunny_augmentation_prob': 0,
+             'use_general_transforms': False},
+ 'directories': {'save_model_path': './model.pth'},
+ 'training': {'batch_size': 16,
+              'learning_rate': 0.001,
+              'loss': 'CrossEntropy',
+              'num_epochs': 100,
+              'optimizer': 'Adam'}}
+Training samples: 5936
+Testing samples: 1485
+
+Start epoch 1/100
+Error loading configuration from configs/conf_000.yaml: CUDA out of memory. Tried to allocate 128.00 MiB. GPU 0 has a total capacity of 7.75 GiB of which 84.31 MiB is free. Process 2254232 has 5.74 GiB memory in use. Including non-PyTorch memory, this process has 1.91 GiB memory in use. Of the allocated memory 1.68 GiB is allocated by PyTorch, and 131.74 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
