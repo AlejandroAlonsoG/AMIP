@@ -52,6 +52,15 @@ pip install -r requirements.txt
 
 - **execute_cremi.py**:
   - Script for running tasks on CREMI.
+ 
+- **class_distribution.py**:
+  - calculate class distribution proportions and create bar chart figure 
+
+- **metrics.py**:
+  - contains quantitative image quality metric definitions and a calculation on both sunny and rainy images, create a .csv file with the results
+
+- **metrics_evaluation.py**:
+  - evaluate the .csv file created by metrics.py, create histograms of metrics
 
 ## Notes
 - Augmentation strategies were implemented to simulate transitions between sunny and rainy conditions using the Albumentations library. Specific transformations were applied for each condition to improve generalization.
